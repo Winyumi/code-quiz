@@ -70,12 +70,13 @@ var QuizGame = function() {
     }
 
     // Checks answer and display result
-    function evaluateAnswer(a) {
+    function evaluateAnswer(choice) {
 
         $("#quiz .choice").addClass("fade").attr("disabled", true);
-        $(a).removeClass("fade");
+        $(choice).removeClass("fade");
 
-        if ($(a).val() == questions[current].answer) {
+        // Check if answer is correct
+        if ($(choice).val() == questions[current].answer) {
             $("#quiz .result")
             .text("Correct!")
             .attr("style","color: green;");
