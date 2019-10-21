@@ -198,11 +198,11 @@ var QuizGame = function() {
             $("<button>")
             .addClass("btn-begin-quiz btn btn-primary")
             .text(label ? label : "Begin Quiz")
-        );
-        $("#quiz .btn-begin-quiz").on("click", function() {
-            showQuestion(0);
-            displayTimer();
-        });
+            .on("click", function() {
+                showQuestion(0);
+                displayTimer();
+            })
+        )
     }
 
     function btnStartOver(label) {
@@ -210,10 +210,11 @@ var QuizGame = function() {
             $("<button>")
             .addClass("btn-start-over btn btn-primary")
             .text(label ? label : "Start Over")
+            .on("click", function() {
+                init();
+            })
         );
-        $("#quiz .btn-start-over").on("click", function() {
-            init();
-        });
+
     }
 
     function btnViewHighScores(label) {
@@ -221,10 +222,10 @@ var QuizGame = function() {
             $("<button>")
             .addClass("view-highscores btn btn-primary")
             .text(label ? label : "View High Scores")
+            .on("click", function() {
+                displayHighScores();
+            })
         );
-        $("#quiz .view-highscores").on("click", function() {
-            displayHighScores();
-        });
     }
 
     function btnClearHighScores(label) {
@@ -232,12 +233,12 @@ var QuizGame = function() {
             $("<button>")
             .addClass("clear btn btn-primary")
             .text(label ? label : "Clear High Scores")
-        );
-        $("#quiz .clear").on("click", function() {
-            localStorage.highscores = [];
-            highscores = [];
-            displayHighScores();
-        });
+            .on("click", function() {
+                localStorage.highscores = [];
+                highscores = [];
+                displayHighScores();
+            })
+        )
     }
 };
 
