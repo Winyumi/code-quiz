@@ -23,36 +23,23 @@ var QuizGame = function() {
             $("<div>").addClass("timer"),
             $("<div>").addClass("main")
         );
-        startQuiz();
+        beginQuiz();
     }
 
     // Sets up quiz page
-    function startQuiz() {
+    function beginQuiz() {
         $("#quiz .main").empty();
         $("#quiz .main").append(
             $("<h1>")
             .text("Coding Quiz Challenge"),
             $("<p>")
-            .text("Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your timer score by " + penalty + " seconds!"),
-            $("<button>")
-            .addClass("start btn btn-primary")
-            .text("Start Quiz")
+            .text("Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your timer score by " + penalty + " seconds!")
         );
-        // Listen for click event on Start button
-        $("#quiz .start").on("click", function() {
-            showQuestion(0);
-            displayTimer();
-        });
 
-        $("#quiz .main").append(
-            $("<button>")
-            .addClass("view-highscores btn btn-primary")
-            .text("View High Scores")
-        );
-        // Listen for click event on Start Over button
-        $("#quiz .view-highscores").on("click", function() {
-            displayHighScores();
-        });
+        btnBeginQuiz();
+        btnViewHighScores();
+
+
     }
 
     // Sets up question and choices
@@ -142,16 +129,6 @@ var QuizGame = function() {
                 .text("Save High Score")
             )
         );
-        $("#quiz .main").append(
-            $("<button>")
-            .addClass("start btn btn-primary")
-            .text("Start Over")
-        );
-
-        // Listen for click event on Start Over button
-        $("#quiz .start").on("click", function() {
-            init();
-        });
         // Listen for click event on Save High Score button
         $("#quiz .save .btn").on("click", function() {
             highscores.push({
@@ -161,6 +138,8 @@ var QuizGame = function() {
             localStorage.highscores = JSON.stringify(highscores);
             displayHighScores();
         });
+
+        btnStartOver();
     }
 
     // Shows high scores
@@ -180,27 +159,9 @@ var QuizGame = function() {
                 )
             )
         });
-        $("#quiz .main").append(
-            $("<button>")
-            .addClass("start btn btn-primary")
-            .text("Start Over")
-        );
-        // Listen for click event on Start Over button
-        $("#quiz .start").on("click", function() {
-            init();
-        });
 
-        $("#quiz .main").append(
-            $("<button>")
-            .addClass("clear btn btn-primary")
-            .text("Clear High Scores")
-        );
-        // Listen for click event on Start Over button
-        $("#quiz .clear").on("click", function() {
-            localStorage.highscores = [];
-            highscores = [];
-            displayHighScores();
-        });
+        btnStartOver("Return To Title");
+        btnClearHighScores();
 
     }
 
@@ -229,6 +190,55 @@ var QuizGame = function() {
         clearInterval(countdown);
     }
 
+
+    // Commonly used buttons
+
+    function btnBeginQuiz(label) {
+        $("#quiz .main").append(
+            $("<button>")
+            .addClass("btn-begin-quiz btn btn-primary")
+            .text(label ? label : "Begin Quiz")
+        );
+        $("#quiz .btn-begin-quiz").on("click", function() {
+            showQuestion(0);
+            displayTimer();
+        });
+    }
+
+    function btnStartOver(label) {
+        $("#quiz .main").append(
+            $("<button>")
+            .addClass("btn-start-over btn btn-primary")
+            .text(label ? label : "Start Over")
+        );
+        $("#quiz .btn-start-over").on("click", function() {
+            init();
+        });
+    }
+
+    function btnViewHighScores(label) {
+        $("#quiz .main").append(
+            $("<button>")
+            .addClass("view-highscores btn btn-primary")
+            .text(label ? label : "View High Scores")
+        );
+        $("#quiz .view-highscores").on("click", function() {
+            displayHighScores();
+        });
+    }
+
+    function btnClearHighScores(label) {
+        $("#quiz .main").append(
+            $("<button>")
+            .addClass("clear btn btn-primary")
+            .text(label ? label : "Clear High Scores")
+        );
+        $("#quiz .clear").on("click", function() {
+            localStorage.highscores = [];
+            highscores = [];
+            displayHighScores();
+        });
+    }
 };
 
 QuizGame();
