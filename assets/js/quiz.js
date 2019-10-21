@@ -22,14 +22,14 @@ var QuizGame = function() {
         startQuiz();
     }
 
-    // Sets up welcome page
+    // Sets up quiz page
     function startQuiz() {
         $("#quiz .main").empty();
         $("#quiz .main").append(
             $("<h1>")
             .text("Coding Quiz Challenge"),
             $("<p>")
-            .text("Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by " + penalty + " seconds!"),
+            .text("Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your timer score by " + penalty + " seconds!"),
             $("<button>")
             .addClass("start btn btn-primary")
             .text("Start Quiz")
