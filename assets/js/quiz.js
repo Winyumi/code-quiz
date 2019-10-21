@@ -108,7 +108,7 @@ var QuizGame = function() {
             $("<h1>")
             .text((timer > 0 ? "All done!" : "Oh no!")),
             $("<p>")
-            .text("Your final score is " + timer + "."),
+            .text("Your final score is " + timer + "." + (timer === 0 ? " Try again!" : "")),
             $("<button>")
             .addClass("start btn btn-primary")
             .text("Start Over")
