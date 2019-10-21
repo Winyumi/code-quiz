@@ -41,6 +41,7 @@ var QuizGame = function() {
         });
     }
 
+    // Sets up question and choices
     function showQuestion(current) {
         $("#quiz .main").empty();
         $("#quiz .main").append(
@@ -68,8 +69,8 @@ var QuizGame = function() {
         });
     }
 
+    // Checks answer and display result
     function evaluateAnswer(a) {
-        // timer += delay; // Compensate for delay duration
 
         $("#quiz .choice").addClass("fade").attr("disabled", true);
         $(a).removeClass("fade");
@@ -88,6 +89,7 @@ var QuizGame = function() {
             .attr("style","color: red;");
         }
 
+        // Delay the timer to display result
         stopTimer();
         displayTimer();
 
@@ -101,6 +103,7 @@ var QuizGame = function() {
         }, delay*1000);
     }
 
+    // Ends the quiz and sets up score page
     function endQuiz() {
         $("#quiz .timer").empty();
         $("#quiz .main").empty();
@@ -113,7 +116,8 @@ var QuizGame = function() {
             .addClass("start btn btn-primary")
             .text("Start Over")
         );
-        // Listen for click event on Start button
+
+        // Listen for click event on Start Over button
         $("#quiz .start").on("click", function() {
             init();
         });
@@ -121,10 +125,13 @@ var QuizGame = function() {
 
 
     // Timer functions
+
+    // Show and update timer text
     function displayTimer() {
         $("#quiz .timer").text("Time: " + timer);
     }
 
+    // Start the timer and end quiz if timer runs out
     function startTimer() {
         countdown = setInterval(function() {
             if (timer > 0) {
@@ -135,6 +142,8 @@ var QuizGame = function() {
             }
         }, 1000)
     }
+
+    // Stop the timer
     function stopTimer() {
         clearInterval(countdown);
     }
