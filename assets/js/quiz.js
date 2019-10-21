@@ -114,33 +114,36 @@ var QuizGame = function() {
             $("<p>")
             .text("Your final score is " + timer + "." + (timer <= 0 ? " Try again!" : ""))
         );
-        if (timer > 0)
-        $("#quiz .main").append(
-            $("<div>")
-            .addClass("save")
-            .append(
-                $("<input>")
-                .attr("type","text")
-                .attr("placeholder","Your Name")
-                .addClass("name form-control"),
-                $("<button>")
-                .addClass("btn btn-primary")
-                .text("Save High Score")
-            )
-        );
-        $("#quiz .save input").keypress(function(event) {
-            if (event.keyCode === 13) {
-                $("#quiz .save button").click();
-            }
-        });
-        $("#quiz .save .btn").on("click", function() {
-            highscores.push({
-                name: $("#quiz .save .name").val(),
-                score: timer
+        if (timer > 0) {
+            $("#quiz .main").append(
+                $("<div>")
+                .addClass("save")
+                .append(
+                    $("<input>")
+                    .attr("type","text")
+                    .attr("placeholder","Your Name")
+                    .addClass("name form-control"),
+                    $("<button>")
+                    .addClass("btn btn-primary")
+                    .text("Save High Score")
+                )
+            );
+            $("#quiz .save .name").keypress(function(event) {
+                if (event.keyCode === 13 && $("#quiz .save .name").val()) {
+                    $("#quiz .save button").click();
+                }
             });
-            localStorage.setItem("highscores", JSON.stringify(highscores));
-            displayHighScores();
-        });
+            $("#quiz .save .btn").on("click", function() {
+                if ($("#quiz .save .name").val()) {
+                    highscores.push({
+                        name: $("#quiz .save .name").val(),
+                        score: timer
+                    });
+                    localStorage.setItem("highscores", JSON.stringify(highscores));
+                    displayHighScores();
+                }
+            });
+        }
 
         btnStartOver();
     }
