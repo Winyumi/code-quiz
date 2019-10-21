@@ -28,3 +28,6 @@ p {
     font-weight: bold;
     font-size: 18px;
 }
+#quiz .timer {
+    margin: 0 0 20px;
+}
