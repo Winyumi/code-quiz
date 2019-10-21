@@ -134,7 +134,7 @@ var QuizGame = function() {
             highscores.push({
                 name: $("#quiz .save .name").val(),
                 score: timer
-            })
+            });
             localStorage.highscores = JSON.stringify(highscores);
             displayHighScores();
         });
@@ -150,14 +150,14 @@ var QuizGame = function() {
                 $("<h2>").text("High Scores"),
                 $("<table>").addClass("table")
             )
-        )
+        );
         $.each(highscores, function(index, item) {
             $("#quiz .highscores table").prepend(
                 $("<tr>").append(
                     $("<td>").text(item.name).addClass("text-left"),
                     $("<td>").text(item.score).addClass("text-right")
                 )
-            )
+            );
         });
 
         btnStartOver("Return To Title");
@@ -202,7 +202,7 @@ var QuizGame = function() {
                 showQuestion(0);
                 displayTimer();
             })
-        )
+        );
     }
 
     function btnStartOver(label) {
@@ -238,7 +238,7 @@ var QuizGame = function() {
                 highscores = [];
                 displayHighScores();
             })
-        )
+        );
     }
 };
 
