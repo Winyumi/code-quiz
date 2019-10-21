@@ -128,6 +128,11 @@ var QuizGame = function() {
                 .text("Save High Score")
             )
         );
+        $("#quiz .save input").keypress(function(event) {
+            if (event.keyCode === 13) {
+                $("#quiz .save button").click();
+            }
+        });
         $("#quiz .save .btn").on("click", function() {
             highscores.push({
                 name: $("#quiz .save .name").val(),
