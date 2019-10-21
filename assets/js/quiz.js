@@ -14,8 +14,8 @@ var QuizGame = function() {
     function init() {
         timer = questions.length * penalty;
         current = 0;
-        if (localStorage.highscores) {
-            highscores = JSON.parse(localStorage.highscores);
+        if (localStorage.getItem("highscores")) {
+            highscores = JSON.parse(localStorage.getItem("highscores"));
         }
         stopTimer();
         $("#quiz").empty();
@@ -72,7 +72,6 @@ var QuizGame = function() {
 
     // Checks answer and display result
     function evaluateAnswer(choice) {
-
         $("#quiz .choice").addClass("fade").attr("disabled", true);
         $(choice).removeClass("fade");
 
@@ -129,13 +128,12 @@ var QuizGame = function() {
                 .text("Save High Score")
             )
         );
-        // Listen for click event on Save High Score button
         $("#quiz .save .btn").on("click", function() {
             highscores.push({
                 name: $("#quiz .save .name").val(),
                 score: timer
             });
-            localStorage.highscores = JSON.stringify(highscores);
+            localStorage.setItem("highscores", JSON.stringify(highscores));
             displayHighScores();
         });
 
@@ -234,7 +232,7 @@ var QuizGame = function() {
             .addClass("btn btn-danger")
             .text(label ? label : "Clear High Scores")
             .on("click", function() {
-                localStorage.highscores = [];
+                localStorage.removeItem("highscores");
                 highscores = [];
                 displayHighScores();
             })
