@@ -139,55 +139,6 @@ var QuizGame = function() {
         clearInterval(countdown);
     }
 
-    function startGame(){
-        // this task handles starting the game
-        // ex. showing the "splash page"
-        // displaying the navigation
-        // listening for the user to click upon the button
-        // loads the score from localStorage or sets up localStorage
-    }
-
-    function startBtn_onClick(event){
-        // this task handles what to do when you click on the start button
-        // shows a new page (maybe) that
-        // displays the questions
-        // that is all that it does.
-        gameLogic(); // now run the game logic itself
-
-    }
-
-    function gameLogic(){
-        // this task deals with the game logic.
-        // starts the timer
-        // listen for click events of all quiz question buttons.
-        //
-
-    }
-
-    function quizBtns_onClick(event){
-        // this task handles what to do when you click on a question's "answer button"
-        // maybe call a function that determines if question is answered correctly (or not)
-        determineIfQuestionIsRightOrWrong(question);
-    }
-
-    function determineIfQuestionIsRightOrWrong(question){
-        // this task, given a question, determines if the answer is right or wrong
-        // if question is correct, change the score and add some points
-        // if question is incorrect, change the score and decrease points
-    }
-
-    function changeTheScore(value){
-        // this task, given a value will increase -or- decrease the score.
-        // that is all it does.
-    }
-
-    function endGame(){
-        // steps required when the game is ended.
-
-    }
-
-    // ... add additional functions as needed. THIS IS NOT COMPLETE.
-    // init(); // begins initializing the game
 };
 
 QuizGame();
