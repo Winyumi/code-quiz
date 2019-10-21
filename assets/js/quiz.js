@@ -5,13 +5,13 @@ var QuizGame = function() {
     var current = 0;
     var countdown;
     const delay = 1; // seconds
-    const penalty = 10; // seconds
+    const penalty = 15; // seconds
 
     init();
 
     // Initializes quiz
-    function init(){
-        timer = questions.length * 1;
+    function init() {
+        timer = questions.length * penalty;
         current = 0;
         stopTimer();
         $("#quiz").empty();
