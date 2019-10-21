@@ -196,7 +196,7 @@ var QuizGame = function() {
     function btnBeginQuiz(label) {
         $("#quiz .main").append(
             $("<button>")
-            .addClass("btn-begin-quiz btn btn-primary")
+            .addClass("btn btn-primary")
             .text(label ? label : "Begin Quiz")
             .on("click", function() {
                 showQuestion(0);
@@ -208,7 +208,7 @@ var QuizGame = function() {
     function btnStartOver(label) {
         $("#quiz .main").append(
             $("<button>")
-            .addClass("btn-start-over btn btn-primary")
+            .addClass("btn btn-primary")
             .text(label ? label : "Start Over")
             .on("click", function() {
                 init();
@@ -220,7 +220,7 @@ var QuizGame = function() {
     function btnViewHighScores(label) {
         $("#quiz .main").append(
             $("<button>")
-            .addClass("view-highscores btn btn-primary")
+            .addClass("btn btn-secondary")
             .text(label ? label : "View High Scores")
             .on("click", function() {
                 displayHighScores();
@@ -231,7 +231,7 @@ var QuizGame = function() {
     function btnClearHighScores(label) {
         $("#quiz .main").append(
             $("<button>")
-            .addClass("clear btn btn-primary")
+            .addClass("btn btn-danger")
             .text(label ? label : "Clear High Scores")
             .on("click", function() {
                 localStorage.highscores = [];
